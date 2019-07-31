@@ -1,6 +1,11 @@
+# Patched cfg-if for xargo and customized sysroot
+
+Rust's default libunwind is now depending on cfg-if from crates.io. However, this cfg-if depends on core, and it cannot be built before the sysroot has been built. This patched cfg-if removes the dependency of libcore by adding `#![no_core]` to it.
+
 # cfg-if
 
 [Documentation](https://docs.rs/cfg-if)
+
 
 A macro to ergonomically define an item depending on a large number of #[cfg]
 parameters. Structured like an if-else chain, the first matching branch is the

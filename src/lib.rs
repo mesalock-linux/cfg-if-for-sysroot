@@ -23,7 +23,9 @@
 //! # fn main() {}
 //! ```
 
-#![no_std]
+#![feature(no_core)]
+#![no_core]
+
 #![doc(html_root_url = "https://docs.rs/cfg-if")]
 #![deny(missing_docs)]
 #![cfg_attr(test, deny(warnings))]
