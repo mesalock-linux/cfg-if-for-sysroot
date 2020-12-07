@@ -13,7 +13,7 @@ item that gets emitted.
 
 ```toml
 [dependencies]
-cfg-if = "0.1"
+cfg-if = "1.0"
 ```
 
 ## Example
@@ -32,6 +32,15 @@ cfg_if::cfg_if! {
 fn main() {
     foo();
 }
+```
+The `cfg_if!` block above is expanded to:
+```rust
+#[cfg(unix)]
+fn foo() { /* unix specific functionality */ }
+#[cfg(all(target_pointer_width = "32", not(unix)))]
+fn foo() { /* non-unix, 32-bit functionality */ }
+#[cfg(not(any(unix, target_pointer_width = "32")))]
+fn foo() { /* fallback implementation */ }        
 ```
 
 # License
